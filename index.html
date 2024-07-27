@@ -41,30 +41,29 @@
     </style>
 </head>
 <body>
-    <h1>My website isn't done yet!</h1>
+    <h1>website isn't done yet</h1>
     <div class="timer" id="countdown"></div>
-    <audio id="background-music" loop autoplay muted>
+    <audio id="background-music" loop>
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
+            audio.volume = 0.1;
 
-            // Function to play the audio
-            var playAudio = function() {
-                audio.muted = false;  // Unmute the audio
+            function playAudio() {
                 audio.play().catch(function(error) {
                     console.log('Autoplay prevented:', error);
-                    // Handling autoplay prevention
                 });
-            };
+            }
 
-            // Try to autoplay the audio
-            playAudio();
+            document.body.addEventListener('click', function() {
+                playAudio();
+                document.body.removeEventListener('click', arguments.callee);
+            });
 
-            // Set the estimated completion date and time
-            var endDate = new Date("2024-08-10T00:00:00"); // Adjust to your estimated completion time
+            var endDate = new Date("2024-08-10T00:00:00");
             var countdownElement = document.getElementById('countdown');
 
             function updateCountdown() {
@@ -83,8 +82,8 @@
                     `${days}d ${hours}h ${minutes}m ${seconds}s`;
             }
 
-            var timerInterval = setInterval(updateCountdown, 1000); // Update every second
-            updateCountdown(); // Initial call to display the countdown immediately
+            var timerInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
         });
     </script>
 </body>
