@@ -10,6 +10,7 @@
             padding: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
@@ -17,10 +18,14 @@
             animation: rainbow 20s ease infinite;
             font-family: Arial, sans-serif;
             color: black;
+            text-align: center;
         }
         h1 {
             font-size: 2rem;
-            text-align: center;
+        }
+        .timer {
+            font-size: 1.5rem;
+            margin-top: 20px;
         }
         @keyframes rainbow {
             0% {
@@ -37,6 +42,7 @@
 </head>
 <body>
     <h1>My website isn't done yet!</h1>
+    <div class="timer" id="countdown"></div>
     <audio id="background-music" loop>
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -54,6 +60,28 @@
                 });
             };
             playAudio();
+
+            // Set the estimated completion date and time
+            var endDate = new Date("2024-08-10T00:00:00"); // Adjust to your estimated completion time
+            var countdownElement = document.getElementById('countdown');
+
+            function updateCountdown() {
+                var now = new Date();
+                var timeDiff = endDate - now;
+                if (timeDiff <= 0) {
+                    countdownElement.innerHTML = "Website is live!";
+                    clearInterval(timerInterval);
+                    return;
+                }
+                var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                countdownElement.innerHTML = 
+                    `${days}d ${hours}h ${minutes}m`;
+            }
+
+            var timerInterval = setInterval(updateCountdown, 60000); // Update every minute
+            updateCountdown(); // Initial call to display the countdown immediately
         });
     </script>
 </body>
