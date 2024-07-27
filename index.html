@@ -76,11 +76,12 @@
                 var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
                 var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
                 countdownElement.innerHTML = 
-                    `${days}d ${hours}h ${minutes}m`;
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
             }
 
-            var timerInterval = setInterval(updateCountdown, 60000); // Update every minute
+            var timerInterval = setInterval(updateCountdown, 1000); // Update every second
             updateCountdown(); // Initial call to display the countdown immediately
         });
     </script>
