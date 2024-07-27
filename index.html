@@ -37,9 +37,25 @@
 </head>
 <body>
     <h1>My website isn't done yet!</h1>
-    <audio autoplay loop>
+    <audio id="background-music" loop>
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-music');
+            audio.play().catch(function(error) {
+                console.log('Autoplay prevented:', error);
+                // Unmute button
+                var button = document.createElement('button');
+                button.textContent = 'Play Music';
+                button.onclick = function() {
+                    audio.play();
+                    button.style.display = 'none';
+                };
+                document.body.appendChild(button);
+            });
+        });
+    </script>
 </body>
 </html>
