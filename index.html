@@ -43,6 +43,7 @@
 <body>
     <h1>My website isn't done yet!</h1>
     <div class="timer" id="countdown"></div>
+    <button id="play-music" style="display: none;">Play Music</button>
     <audio id="background-music" loop>
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -50,15 +51,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
-            audio.volume = 0.1;  // Set volume to 10%
+            var playButton = document.getElementById('play-music');
+
+            // Function to play the audio
             var playAudio = function() {
                 audio.play().catch(function(error) {
                     console.log('Autoplay prevented:', error);
-                    document.addEventListener('click', function() {
-                        audio.play();
-                    }, {once: true});
+                    // Show the play button if autoplay is prevented
+                    playButton.style.display = 'block';
                 });
             };
+
+            // Add an event listener to the play button to start audio on user interaction
+            playButton.addEventListener('click', function() {
+                playAudio();
+                playButton.style.display = 'none'; // Hide the button after clicking
+            });
+
+            // Automatically try to play audio
             playAudio();
 
             // Set the estimated completion date and time
