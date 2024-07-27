@@ -12,15 +12,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('https://media.tenor.com/cA2zwyzywCcAAAAd/cat-cat-vibing.gif') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            background-size: 1400% 1400%;
+            animation: rainbow 20s ease infinite;
             font-family: Arial, sans-serif;
             color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         h1 {
             font-size: 2rem;
             text-align: center;
+        }
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
