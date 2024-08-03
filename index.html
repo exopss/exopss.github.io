@@ -3,103 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi</title>
+    <title>Test Site</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
             background-size: 1400% 1400%;
             animation: rainbow 20s ease infinite;
-            font-family: Arial, sans-serif;
-            color: black;
+        }
+
+        @keyframes rainbow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .container {
             text-align: center;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
-        h1 {
-            font-size: 2rem;
-        }
-        .timer {
-            font-size: 1.5rem;
-            margin-top: 20px;
-        }
+
         .button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 20px;
             color: white;
-            background-color: #007BFF;
+            background-color: black;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
         }
-        .button:hover {
-            background-color: #0056b3;
+
+        .section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
         }
-        @keyframes rainbow {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+
+        #Movies { background-color: rgba(0, 0, 0, 0.5); }
+        #NONE1 { background-color: rgba(0, 0, 0, 0.6); }
+        #NONE2 { background-color: rgba(0, 0, 0, 0.7); }
     </style>
 </head>
 <body>
-    <h1>My website isn't done yet!</h1>
-    <div class="timer" id="countdown"></div>
-    <a href="https://exopss.lol/test" class="button">test website</a>
-    <audio id="background-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('background-music');
-            audio.volume = 0.1;
+    <div class="container">
+        <a href="https://fmovs.exopss.lol/" class="button" target="_blank">Movie Website</a>
+        <a href="#NONE1" class="button">Coming soon</a>
+        <a href="#NONE2" class="button">Coming soon</a>
+    </div>
 
-            function playAudio() {
-                audio.play().catch(function(error) {
-                    console.log('Autoplay prevented:', error);
-                });
-            }
-
-            document.body.addEventListener('click', function() {
-                playAudio();
-                document.body.removeEventListener('click', arguments.callee);
-            });
-
-            var endDate = new Date("2024-08-10T00:00:00");
-            var countdownElement = document.getElementById('countdown');
-
-            function updateCountdown() {
-                var now = new Date();
-                var timeDiff = endDate - now;
-                if (timeDiff <= 0) {
-                    countdownElement.innerHTML = "Website is live!";
-                    clearInterval(timerInterval);
-                    return;
-                }
-                var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-                countdownElement.innerHTML = 
-                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }
-
-            var timerInterval = setInterval(updateCountdown, 1000);
-            updateCountdown();
-        });
-    </script>
+    <div id="Movies" class="section">
+        Movies
+    </div>
+    <div id="NONE1" class="section">
+        Coming soon
+    </div>
+    <div id="NONE2" class="section">
+        Coming soon
+    </div>
 </body>
 </html>
