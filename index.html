@@ -65,7 +65,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
-            audio.volume = 0.1; // Set volume to 10% for a low sound level
+            audio.volume = 0.1;
 
             function playAudio() {
                 audio.play().catch(function(error) {
@@ -73,14 +73,12 @@
                 });
             }
 
-            // Start audio playback on user interaction
             document.body.addEventListener('click', function() {
                 playAudio();
-                document.body.removeEventListener('click', arguments.callee); // Remove event listener after first click
+                document.body.removeEventListener('click', arguments.callee);
             });
 
-            // Set the estimated completion date and time
-            var endDate = new Date("2024-08-10T00:00:00"); // Adjust to your estimated completion time
+            var endDate = new Date("2024-08-10T00:00:00");
             var countdownElement = document.getElementById('countdown');
 
             function updateCountdown() {
@@ -99,8 +97,8 @@
                     `${days}d ${hours}h ${minutes}m ${seconds}s`;
             }
 
-            var timerInterval = setInterval(updateCountdown, 1000); // Update every second
-            updateCountdown(); // Initial call to display the countdown immediately
+            var timerInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
         });
     </script>
 </body>
