@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test site</title>
+    <title>Test Site</title>
     <style>
         body {
             margin: 0;
@@ -24,6 +24,9 @@
 
         .container {
             text-align: center;
+            position: absolute;
+            top: 10px;
+            width: 100%;
         }
 
         .button {
@@ -48,26 +51,26 @@
             color: white;
         }
 
-        #section1 { background-color: rgba(0, 0, 0, 0.5); }
-        #section2 { background-color: rgba(0, 0, 0, 0.6); }
-        #section3 { background-color: rgba(0, 0, 0, 0.7); }
+        #Movies { background-color: rgba(0, 0, 0, 0.5); }
+        #NONE1 { background-color: rgba(0, 0, 0, 0.6); }
+        #NONE2 { background-color: rgba(0, 0, 0, 0.7); }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="#Movies" class="button">movie website</a>
-        <a href="#NONE" class="button">NONE</a>
-        <a href="#NONE" class="button">NONE</a>
+        <a href="https://fmovs.exopss.lol/" class="button" target="_blank">Movie Website</a>
+        <a href="#NONE1" class="button">NONE</a>
+        <a href="#NONE2" class="button">NONE</a>
     </div>
 
-    <div id="section1" class="section">
-        Section 1
+    <div id="Movies" class="section">
+        Section 1: Movies
     </div>
-    <div id="section2" class="section">
-        Section 2
+    <div id="NONE1" class="section">
+        Section 2: NONE
     </div>
-    <div id="section3" class="section">
-        Section 3
+    <div id="NONE2" class="section">
+        Section 3: NONE
     </div>
 </body>
 </html>
