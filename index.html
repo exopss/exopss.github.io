@@ -27,6 +27,20 @@
             font-size: 1.5rem;
             margin-top: 20px;
         }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
         @keyframes rainbow {
             0% {
                 background-position: 0% 50%;
@@ -41,8 +55,9 @@
     </style>
 </head>
 <body>
-    <h1>website isn't done yet</h1>
+    <h1>My website isn't done yet!</h1>
     <div class="timer" id="countdown"></div>
+    <a href="https://exopss.lol/test" class="button">Go to Test</a>
     <audio id="background-music" loop>
         <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -50,7 +65,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
-            audio.volume = 0.1;
+            audio.volume = 0.1; // Set volume to 10% for a low sound level
 
             function playAudio() {
                 audio.play().catch(function(error) {
@@ -58,12 +73,14 @@
                 });
             }
 
+            // Start audio playback on user interaction
             document.body.addEventListener('click', function() {
                 playAudio();
-                document.body.removeEventListener('click', arguments.callee);
+                document.body.removeEventListener('click', arguments.callee); // Remove event listener after first click
             });
 
-            var endDate = new Date("9999-12-30T00:00:00");
+            // Set the estimated completion date and time
+            var endDate = new Date("2024-08-10T00:00:00"); // Adjust to your estimated completion time
             var countdownElement = document.getElementById('countdown');
 
             function updateCountdown() {
@@ -82,8 +99,8 @@
                     `${days}d ${hours}h ${minutes}m ${seconds}s`;
             }
 
-            var timerInterval = setInterval(updateCountdown, 1000);
-            updateCountdown();
+            var timerInterval = setInterval(updateCountdown, 1000); // Update every second
+            updateCountdown(); // Initial call to display the countdown immediately
         });
     </script>
 </body>
